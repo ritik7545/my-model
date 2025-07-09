@@ -32,3 +32,43 @@ window.addEventListener('scroll', function () {
     images.forEach(img => img.style.animationDelay = '0s');
   }
 });
+
+// Modal functionality for image gallery
+
+document.addEventListener('DOMContentLoaded', function() {
+  const gallery = document.getElementById('imageGallery');
+  if (!gallery) return;
+
+  // Create modal elements
+  const modal = document.createElement('div');
+  modal.id = 'imgModal';
+  modal.style.display = 'none';
+  modal.innerHTML = `
+    <div class="modal-backdrop"></div>
+    <img class="modal-img" src="" alt="Full Image" />
+  `;
+  document.body.appendChild(modal);
+
+  const modalImg = modal.querySelector('.modal-img');
+  const backdrop = modal.querySelector('.modal-backdrop');
+
+  // Show modal on image click
+  gallery.addEventListener('click', function(e) {
+    const img = e.target.closest('img.gallery-img');
+    if (!img) return;
+    modalImg.src = img.src;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+
+  // Hide modal on backdrop click or ESC
+  function closeModal() {
+    modal.style.display = 'none';
+    modalImg.src = '';
+    document.body.style.overflow = '';
+  }
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) {
+    if (modal.style.display === 'flex' && e.key === 'Escape') closeModal();
+  });
+});
