@@ -217,3 +217,45 @@ body.scrolled .gallery-img * {
     height: auto;
   }
 }
+
+@media (max-width: 600px) {
+  body {
+    background: #fff !important;
+  }
+  .content {
+    display: block;
+    width: 100%;
+  }
+  .intro p {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 1em 0;
+    padding: 0 8px;
+  }
+  .slogan h1 {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 1em 0;
+    padding: 0 8px;
+    font-size: 1.5em;
+    text-align: left;
+  }
+  .image-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1em;
+    width: 100%;
+  }
+  .img-frame {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .gallery-img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+  }
+}
